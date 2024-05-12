@@ -1,7 +1,7 @@
 // Copyright 2022 UNN-IASR
 #include "fun.h"
 #include <cctype>
-#include <cmath> 
+#include <cmath>
 
 unsigned int faStr1(const char *str) {
     unsigned int count = 0;
@@ -12,15 +12,13 @@ unsigned int faStr1(const char *str) {
         if (!inWord &&!std::isspace(*p)) {
             inWord = true;
             hasDigit = false;
-        }
-        else if (inWord && std::isspace(*p)) {
+        } else if (inWord && std::isspace(*p)) {
             inWord = false;
             if (!hasDigit) {
                 ++count;
             }
             hasDigit = false;
-        }
-        else if (std::isdigit(*p)) {
+        } else if (std::isdigit(*p)) {
             hasDigit = true;
         }
     }
@@ -43,7 +41,7 @@ unsigned int faStr2(const char *str) {
                 count++;
                 wordStartedWithUppercase = false;
             }
-        } else if (*p == '\0') { 
+        } else if (*p == '\0') {
             if (wordStartedWithUppercase) {
                 count++;
             }
@@ -79,18 +77,19 @@ unsigned int faStr3(const char *str) {
             inWord = true;
             currentLength++;
         }
-        
+
         str++;
     }
-    
+
     if (inWord) {
         totalLength += currentLength;
         wordCount++;
     }
-    
+
     double averageLength = static_cast<double>(totalLength) / wordCount;
 
-    unsigned int roundedAverageLength = static_cast<unsigned int>(std::round(averageLength));
+    unsigned int roundedAverageLength
+        = static_cast<unsigned int>(std::round(averageLength));
 
     return roundedAverageLength;
 }
